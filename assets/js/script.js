@@ -13,7 +13,7 @@ function clearSearchInput(){
 function pullAPI(cityName){
 
     var APIKey = "07a5be9b6278338d5fd01e132774742f"
-    var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + cityName + '&appid=' + APIKey;
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + '&appid=' + APIKey;
 
     $.ajax({
         url: queryURL,
@@ -85,7 +85,7 @@ searchBtn.addEventListener('click', function() {
 
 function pull5DayAPI(cityName){
 
-    var queryURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=07a5be9b6278338d5fd01e132774742f";
+    var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=07a5be9b6278338d5fd01e132774742f";
     var numOfForecastBoxes = 0;
 
     $.ajax({
