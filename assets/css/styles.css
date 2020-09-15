@@ -46,6 +46,7 @@
 }
 
 .forecast-box {
+    margin: 0;
     padding: 3px;
     width: 20%;
     height: 150px;
@@ -55,8 +56,7 @@
 }
 
 .display-forecast{
-    display: grid;
-    grid-template-columns: repeat(5, auto);
+    display: flex;
+    flex-wrap: wrap;
     gap: 5px;
-    margin:20px 0;
 }
