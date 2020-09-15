@@ -34,9 +34,10 @@ cardElement.on('change', function(event) {
             console.log(sourceClientSecret);
 
                 //create a PaymentIntent to pull {Payment_Intent_Client_Secret}
-
-
-
+                //currently using a static {Payment_Intent_Client_Secret}
+                //need to figure out how to find the PaymentIntent object so I can collect the client secret
+                //and pass it through the confirmCardPayment() dynamicly.
+                
                 //confirm card payment
                 stripe.confirmCardPayment("pi_1HQygWDWSmRspLnGyv6O78db_secret_TpxSP7jL1nvioi4Ao6ZE62nch", {
                     payment_method: {
