@@ -1,0 +1,62 @@
+.center {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+}
+
+.searcher{
+    padding: 0;
+    margin: 1vw;
+    height: 100vh;
+    width: 50%;
+    /* display: grid;
+    grid-template-columns: repeat(1); */
+}
+.search-city-input{
+    grid-template-columns: repeat(2);
+}
+
+
+
+.city-box {
+    margin-top: 5px;
+    padding-left: 5px;
+    height: 50px;
+    border: .5px solid darkgray;
+    box-shadow: black;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+
+}
+.diplay-current-weather{
+    margin-top: 25px;
+    height: 250px;
+    grid-template-columns: repeat(3);
+}
+
+.diplay-current-weather h3{
+    font-size: 20px;
+}
+
+.forecast-box {
+    padding: 3px;
+    width: 20%;
+    height: 150px;
+    background-color: lightskyblue;
+    color: white;
+    border-radius: 10%;
+}
+
+.display-forecast{
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+    gap: 5px;
+    margin:20px 0;
+}
