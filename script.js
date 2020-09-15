@@ -3,10 +3,14 @@ var elements = stripe.elements();
 var cardElement = elements.create('card');
 cardElement.mount('#card-element');
 
+
+
+
 // //This event triggers when a change is made to the cardElement. The conditional checks
 // //to see if the entire input field has been completed, and if so, informs them its complete
 // //in the console
 cardElement.on('change', function(event) {
+    var sourceClientSecret;
     var displayError = document.getElementById('card-errors');
     if (event.error) {
       displayError.textContent = event.error.message;
@@ -14,20 +18,37 @@ cardElement.on('change', function(event) {
       displayError.textContent = '';
       console.log("Credit Card Field has been filled out completely!")
 
-        // Need to create or find the PaymentIntent to pull {Payment_Intent_Client_Secret}
+        stripe.createSource({
+        type: 'ideal',
+        amount: 1099,
+        currency: 'eur',
+        owner: {
+            name: 'Jenny Rosen',
+        },
+        redirect: {
+            return_url: 'https://shop.example.com/crtA6B28E1',
+        },
+        }).then(function(result) {
 
-        //confirm card payment ({Payment_Intent_Client_Secret} provided below is a static key, but needs to be dynamic
-        //and collect the {Payment_Intent_Client_Secret} from the PaymentIntent.)
-        stripe.confirmCardPayment("pi_1HQzz7DWSmRspLnGYl9MbOMk_secret_RsUlJ3beDu8wiDUty1gHAVPWh", {
-            payment_method: {
-                card: cardElement,
-                billing_details: {
-                name: "Jenny Rosen",
-                },
-            },
-        })
-        .then(function(result) {
-            console.log(result)
+            sourceClientSecret = result.source.client_secret;
+            console.log(sourceClientSecret);
+
+                //create a PaymentIntent to pull {Payment_Intent_Client_Secret}
+
+
+
+                //confirm card payment
+                stripe.confirmCardPayment("pi_1HQygWDWSmRspLnGyv6O78db_secret_TpxSP7jL1nvioi4Ao6ZE62nch", {
+                    payment_method: {
+                        card: cardElement,
+                        billing_details: {
+                        name: "Jenny Rosen",
+                        },
+                    },
+                })
+                .then(function(result) {
+                    console.log(result)
+                });
         });
 
     } else{
